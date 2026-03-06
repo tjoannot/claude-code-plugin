@@ -4,32 +4,30 @@ This plugin connects [Claude Code](https://code.claude.com) to [Pigment](https:/
 
 ## Installation
 
-In Claude Code, install the plugin:
+### 1. Install the plugin
+
+In Claude Code, run:
 
 ```
-/plugin install pigment
+/install-plugin tjoannot/claude-code-plugin
 ```
 
-Or install directly from GitHub:
+### 2. Connect to your Pigment workspace
+
+Find your **MCP Endpoint URL** in your Pigment workspace under **Settings > Integrations > MCP**. It looks like:
 
 ```
-/plugin marketplace add tjoannot/claude-code-plugin
-/plugin install pigment@pigment-plugins
+https://pigment.app/api/mcp/public/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-### Configure your MCP endpoint
+Then tell Claude Code:
 
-After installing, set the `PIGMENT_MCP_ID` environment variable to your workspace's MCP ID. You can find this UUID in **Settings > Integrations > MCP** in your Pigment workspace.
+> Set my Pigment MCP URL to `https://pigment.app/api/mcp/public/<your-id>`
 
-Add it to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
+Claude will update the `.mcp.json` configuration for you. You'll be prompted to **authenticate with your Pigment credentials** via OAuth on first use.
 
-```bash
-export PIGMENT_MCP_ID="your-mcp-uuid-here"
-```
+### Prerequisites
 
-Then restart Claude Code. You'll be prompted to authenticate with your Pigment credentials via OAuth 2.1.
-
-**Prerequisites:**
 - MCP must be enabled in your Pigment workspace (**Settings > Integrations > MCP**)
 - AI Search must be activated on the Metrics you want to query via natural language
 
@@ -37,7 +35,7 @@ Then restart Claude Code. You'll be prompted to authenticate with your Pigment c
 
 ### MCP Server
 
-The plugin connects to Pigment's hosted MCP server at `https://pigment.app/api/mcp/public/{your-mcp-id}`. The MCP ID is read from the `PIGMENT_MCP_ID` environment variable. Authentication is handled via OAuth 2.1.
+The plugin connects to Pigment's hosted MCP server using your workspace's unique endpoint URL. Authentication is handled via OAuth 2.1.
 
 ### Skills (8)
 
