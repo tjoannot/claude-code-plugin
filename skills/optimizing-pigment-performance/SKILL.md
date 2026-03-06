@@ -1,4 +1,5 @@
 ---
+name: optimizing-pigment-performance
 description: Always use this skill when troubleshooting slow calculations or timeouts, analyzing profiler output to identify bottlenecks, understanding scope propagation, managing sparsity, optimizing formula performance, improving iterative calculations, optimizing access rights performance, or conducting systematic performance audits. This skill includes supporting files in this directory - explore as needed.
 ---
 

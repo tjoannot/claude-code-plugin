@@ -1,4 +1,5 @@
 ---
+name: writing-pigment-formulas
 description: Always use this skill when writing, editing, or debugging Pigment formulas. Pigment uses a proprietary formula language — NEVER assume you know the syntax, and ALWAYS read the full documentation before writing any formula. Covers data types, modifiers, functions, calculation patterns, and formula performance best practices. Pigment has its own formula syntax, NEVER write formulas in any other language. This skill includes supporting files in this directory - explore as needed.
 ---
 

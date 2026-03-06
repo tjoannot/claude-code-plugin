@@ -1,47 +1,176 @@
 # Pigment Plugin for Claude Code
 
-Build, model, and manage [Pigment](https://www.pigment.com) business planning applications directly from Claude Code.
+This plugin connects [Claude Code](https://code.claude.com) to [Pigment](https://www.pigment.com) via the **Model Context Protocol (MCP)**, giving your AI assistant direct access to your Pigment workspace. Query live business data, build and modify planning models, write formulas, design dashboards, and more — all from your editor.
+
+## Installation
+
+In Claude Code, install the plugin:
+
+```
+/plugin install pigment
+```
+
+Or install directly from GitHub:
+
+```
+/plugin marketplace add https://github.com/tjoannot/claude-code-plugin.git
+/plugin install pigment@claude-code-plugin
+```
+
+After installing, start using it. You'll be prompted to authenticate with your Pigment credentials via OAuth 2.1.
+
+**Prerequisites:**
+- MCP must be enabled in your Pigment workspace (**Settings > Integrations > MCP**)
+- AI Search must be activated on the Metrics you want to query via natural language
 
 ## What's Included
 
 ### MCP Server
 
-The plugin connects to the Pigment MCP server, giving Claude access to **80+ tools** across all Pigment domains:
+The plugin connects to Pigment's hosted MCP server using your workspace's unique endpoint URL. Authentication is handled via OAuth 2.1.
 
-| Domain | Tools |
-|--------|-------|
-| **Applications** | List, create, rename, delete applications, find default scenario, get performance insights |
-| **Metrics** | List, get, create, duplicate, delete metrics, get formula groups, get dependencies |
-| **Lists (Dimensions)** | List, get, create lists, add properties, add rows, set values, create sublists |
-| **Formulas** | Get, create formulas on metrics and list properties |
-| **Boards** | List, get, create, update, delete, duplicate boards, update board blocks |
-| **Views** | List, get, create views, change pivots, filters, sorts, value fields |
-| **Calendars** | List, get, create calendars, add/remove time dimensions, change fiscal year |
-| **Tables** | List, get, create, update, duplicate tables |
-| **Sequences** | List, get, create, update, delete, duplicate sequences |
-| **Scenarios** | List, create scenarios, get settings |
-| **Inputs** | Batch input single/multiple metrics, delete inputs |
-| **Slices** | List, get, create slices |
-| **Variables** | List, get, create, update variables |
-| **Security** | List access rights, list permissions, get snapshot usage |
-| **Audit Trail** | Get application change history |
-| **AI Forecast** | Prepare, create, copy, delete forecasts |
-| **Data Import** | Import CSV to dimensions |
+### Skills (8)
 
-### Skills
+Skills are domain knowledge files that teach the AI assistant how to work with Pigment effectively. They are automatically loaded when relevant to your task.
 
-Eight specialized skills provide deep domain knowledge — the same skills that power Pigment's internal AI modeler agent:
+| Skill | Description |
+|-------|-------------|
+| **modeling-pigment-applications** | Core modeling concepts, architecture, dimensions, metrics, tables, calendars, subsets, access rights, auditing, cleaning |
+| **writing-pigment-formulas** | Pigment's proprietary formula language — syntax, modifiers, functions, validation workflow, performance patterns |
+| **optimizing-pigment-performance** | Profiling, scoping, sparsity management, iterative calculations, access rights performance |
+| **solving-specific-use-cases** | Domain-specific patterns for FP&A, Workforce Planning, OPEX, Supply Chain, Financial Consolidation |
+| **integrating-pigment-data** | CSV import workflow, column mapping, dimension vs. transaction list decisions |
+| **designing-pigment-boards** | Board structure, widget sizing, layout rules, page organization |
+| **designing-pigment-boards-advanced** | Advanced dashboard patterns, widget types, view configuration, display modes |
+| **creating-and-editing-pigment-views** | View creation, draft/override workflow, pivots, filters, sorting |
 
-| Skill | Files | Description |
-|-------|-------|-------------|
-| **Modeling Pigment Applications** | 16 files | Core concepts, architecture, dimensions, metrics, naming conventions, governance rules, access rights, auditing, application cleaning, Test & Deploy safety |
-| **Writing Pigment Formulas** | 16 files | Proprietary formula language — syntax, modifiers (BY, ADD, REMOVE, SELECT, FILTER), all function references (logical, numeric, time/date, lookup, text, finance, security), performance patterns |
-| **Optimizing Pigment Performance** | 9 files | Profiler usage, scope propagation, sparsity management, formula optimization, iterative calculation tuning, access rights performance, troubleshooting workflows |
-| **Designing Pigment Boards** | 7 files | Dashboard design, 12-column grid, widget sizing, board design rules, view selection, page configuration |
-| **Designing Pigment Boards (Advanced)** | 11 files | Complete board and view reference — structure/layout, widget types, display modes, chart types, advanced tables, design patterns, best practices |
-| **Creating and Editing Pigment Views** | 1 file | View configuration, pivot fields, filters, sorting, draft + merge workflow |
-| **Integrating Pigment Data** | 3 files | CSV import, dimension vs transaction list decisions, semantic column matching, cross-app imports |
-| **Solving Specific Use Cases** | 8 files | FP&A (Nexus pattern, OPEX planning), Workforce Planning (layered metrics, cards, changelog), Sales, Supply Chain, Financial Consolidation |
+Each skill uses a **progressive disclosure** pattern: the main SKILL.md provides an overview and routes to detailed supporting documents that the AI reads on demand.
+
+### Tools
+
+The MCP server exposes the following tools on the public gateway.
+
+#### Applications
+
+| Tool | Description |
+|------|-------------|
+| `get_applications` | List all applications the user can access |
+| `ask_application_expert_about_user_application` | Ask a Pigment Expert about the user's application structure and data |
+
+#### Metrics — Query
+
+| Tool | Description |
+|------|-------------|
+| `get_ai_metrics` | List AI-enabled metrics in an application |
+| `get_metric_description` | Get metric structure — dimensions, data type, scenarios |
+| `query_data` | Query data from a metric using natural language |
+
+#### Metrics — CRUD
+
+| Tool | Description |
+|------|-------------|
+| `get_all_metrics` | List all metrics in an application |
+| `get_metric` | Get detailed information about a metric |
+| `find_metric` | Find a metric by name |
+| `create_metric` | Create a new metric |
+| `delete_metric` | Delete a metric |
+| `update_metric_name` | Rename a metric |
+| `update_metric_description` | Update metric description |
+| `update_metric_type` | Change metric data type |
+| `update_metric_dimensions` | Add, remove, or reorder dimensions on a metric |
+| `update_metric_default_aggregators` | Set default aggregation methods |
+| `set_metric_input` | Set input values for a metric |
+| `move_metrics` | Move metrics to another folder |
+| `copy_formula_as_user_inputs` | Copy formula results as user inputs |
+
+#### Lists (Dimensions)
+
+| Tool | Description |
+|------|-------------|
+| `get_all_lists` | List all lists in an application |
+| `get_list` | Get detailed information about a list |
+| `find_list` | Find a list by name |
+| `get_list_items` | Get items from a list with property values |
+| `create_list` | Create a new list |
+| `delete_list` | Delete a list |
+| `update_list_name` | Rename a list |
+| `update_list_description` | Update list description |
+| `update_list_folder` | Move a list to another folder |
+| `add_list_items` | Add items to a list |
+| `delete_list_items` | Delete items from a list |
+| `edit_list_item_history_properties` | Edit list item history properties |
+
+#### List Properties
+
+| Tool | Description |
+|------|-------------|
+| `create_list_property` | Add a property to a list |
+| `delete_list_property` | Remove a property from a list |
+| `update_list_property_name` | Rename a list property |
+| `update_list_property_type` | Change list property data type |
+| `update_list_property_uniqueness` | Change uniqueness constraint |
+| `update_list_property_input_data` | Set raw input data on a list property |
+
+#### Formulas
+
+| Tool | Description |
+|------|-------------|
+| `create_or_update_formula` | Create or update a formula on a metric |
+| `update_list_property_formula` | Create or update a formula on a list property |
+| `get_metric_formula_details` | Get formula details for a metric |
+| `get_list_property_formula_details` | Get formula details for a list property |
+| `validate_formula` | Validate a formula expression |
+
+#### Folders
+
+| Tool | Description |
+|------|-------------|
+| `get_all_folders` | List all folders in an application |
+| `get_folder` | Get folder details |
+| `create_folder` | Create a folder |
+| `update_folder_name` | Rename a folder |
+| `delete_folder` | Delete a folder |
+
+#### Calendars
+
+| Tool | Description |
+|------|-------------|
+| `calendar_get` | Get calendar configuration |
+| `calendar_create` | Create a Gregorian calendar |
+| `calendar_expand` | Expand or shrink calendar date range |
+| `calendar_add_time_dimension` | Add a time dimension to a calendar |
+| `calendar_remove_time_dimension` | Remove a time dimension from a calendar |
+
+#### Tables
+
+| Tool | Description |
+|------|-------------|
+| `get_all_tables` | List all tables in an application |
+| `get_table` | Get detailed table information |
+| `create_table` | Create a table with default view |
+| `update_table` | Update table properties |
+| `delete_table` | Delete a table |
+
+#### Boards
+
+| Tool | Description |
+|------|-------------|
+| `get_all_boards` | List all boards in an application |
+| `get_board` | Get detailed board information |
+| `create_board` | Create a board (dashboard) |
+| `update_board` | Update board configuration |
+| `update_board_widgets` | Update board widgets |
+
+#### Views
+
+| Tool | Description |
+|------|-------------|
+| `get_view` | Get detailed view information |
+| `get_block_views` | Get views for a block |
+| `create_view` | Create a new view |
+| `update_view` | Update a view |
+| `create_draft_view` | Create a draft view for safe editing |
+| `merge_draft_view` | Merge a draft view back |
 
 ### Commands
 
@@ -56,82 +185,63 @@ Quick-access slash commands for common workflows:
 | `/build-board` | Design and create a dashboard |
 | `/audit` | Audit an application for issues |
 
-## Installation
+## Usage Examples
 
-### From Claude Code
+### Query business data
 
-```
-/plugin install pigment
-```
+- "Show me Revenue by product for the last 6 months"
+- "What's driving Marketing's Opex variance this month?"
+- "Compare actual vs. budget for EMEA revenue"
 
-### From Source (development)
+### Build and modify models
 
-```
-/plugin marketplace add ./pigment-claude-plugin
-/plugin install pigment@pigment-claude-plugin
-```
+- "Create a new dimension called Regions with items EMEA, AMER, APAC"
+- "Add a Revenue metric with dimensions Product and Month"
+- "Write a formula for Gross Margin = Revenue - COGS"
 
-## Authentication
+### Design dashboards
 
-The Pigment MCP server uses OAuth for authentication. When you first use a Pigment tool, Claude Code will prompt you to authenticate with your Pigment account.
+- "Create a board with Revenue and Headcount metrics side by side"
+- "Add a chart view showing Revenue trend by quarter"
+- "Set up a pivot table with Product on rows and Month on columns"
 
-## Examples
+### Explore your workspace
 
-### Model a Revenue Planning App
+- "List all my Pigment Applications"
+- "Show me metrics available in the Financial Planning app"
+- "Describe the structure of the Revenue Metric"
 
-```
-/model Create a revenue planning application with dimensions for Product, Region, and Time.
-Include metrics for Revenue, Cost of Goods Sold, and Gross Margin.
-```
+### Manage data
 
-### Write a Formula
+- "Set the Q1 budget for Marketing to 500K"
 
-```
-/formula Calculate year-to-date revenue that resets at fiscal year boundaries
-```
-
-### Build a Dashboard
+## Directory Structure
 
 ```
-/build-board Create an executive KPI dashboard showing Revenue, Margin %, and Headcount
-trends by quarter with scenario comparison
-```
-
-### Import Data
-
-```
-/import-data Import a CSV file with employee data including Name, Department,
-Start Date, Salary, and Location
-```
-
-## Plugin Structure
-
-```
-pigment-claude-plugin/
+claude-code-plugin/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin manifest
-├── .mcp.json                # MCP server configuration
-├── commands/                 # Slash commands
+│   └── plugin.json              # Plugin manifest
+├── .mcp.json                    # MCP server configuration
+├── logo.svg                     # Plugin logo
+├── README.md                    # This file
+├── commands/                    # Slash commands
 │   ├── audit.md
 │   ├── build-board.md
 │   ├── formula.md
 │   ├── import-data.md
 │   ├── model.md
 │   └── optimize.md
-├── skills/                   # AI skills (72 files across 8 skill directories)
-│   ├── modeling-pigment-applications/    # 16 files
-│   ├── writing-pigment-formulas/         # 16 files
-│   ├── optimizing-pigment-performance/   # 9 files
-│   ├── designing-pigment-boards/         # 7 files
-│   ├── designing-pigment-boards-advanced/ # 11 files
-│   ├── creating-and-editing-pigment-views/ # 1 file
-│   ├── integrating-pigment-data/         # 3 files
-│   └── solving-specific-use-cases/       # 8 files
-└── README.md
+└── skills/
+    ├── modeling-pigment-applications/  # Core modeling knowledge
+    ├── writing-pigment-formulas/      # Formula language reference
+    ├── optimizing-pigment-performance/ # Performance optimization
+    ├── solving-specific-use-cases/    # Domain-specific patterns
+    ├── integrating-pigment-data/      # Data import workflows
+    ├── designing-pigment-boards/      # Dashboard design
+    ├── designing-pigment-boards-advanced/ # Advanced dashboard patterns
+    └── creating-and-editing-pigment-views/ # View configuration
 ```
 
-## Learn More
+## About
 
-- [Pigment Documentation](https://docs.pigment.com)
-- [Pigment Website](https://www.pigment.com)
-- [Claude Code Plugins](https://code.claude.com/docs/en/plugins)
+A Claude Code plugin that provides access to Pigment workspaces, enabling AI assistants to analyze, model, forecast, report on, and plan business performance.

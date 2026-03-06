@@ -1,4 +1,5 @@
 ---
+name: modeling-pigment-applications
 description: Always use this skill when designing or modifying Pigment applications. Covers core concepts, architectural decisions, governance standards and modeling rules, implementation of dimensions/metrics/transaction lists/tables/calendars, list subsets (when to use, data-loss risks, safe patterns), access rights design, application auditing, application cleaning, architecture design, and Test & Deploy safe modeling. This skill includes supporting files in this directory - explore as needed.
 ---
 

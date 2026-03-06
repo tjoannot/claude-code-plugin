@@ -1,4 +1,5 @@
 ---
+name: solving-specific-use-cases
 description: Always use this skill when building or extending models for specific planning domains — FP&A, Workforce Planning, Sales Performance Management, Supply Chain Planning, or Financial Consolidation. Covers proven modeling patterns and domain-specific best practices. This skill includes supporting files in this directory - explore as needed.
 ---
 

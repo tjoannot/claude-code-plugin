@@ -1,4 +1,5 @@
 ---
+name: creating-and-editing-pigment-views
 description: Always use this skill when creating or editing Views, or needing to pick a View.
 ---
 

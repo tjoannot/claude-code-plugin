@@ -1,4 +1,5 @@
 ---
+name: designing-pigment-boards-advanced
 description: Always use this skill when creating and modifying Pigment dashboards and Boards. This skills describes everything there is to know about dashboarding, views and other data visualization features in Pigment. This includes laying out widgets on the grid system, configuring Views with filters and sorting, choosing display modes and chart types, sizing widgets, organizing Board sections, applying proven design patterns for common business use cases, or translating business questions into visual layouts. This skill includes supporting files in this directory - explore as needed.
 ---
 

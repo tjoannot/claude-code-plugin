@@ -1,4 +1,5 @@
 ---
+name: designing-pigment-boards
 description: Always use when creating or editing a Board. This skill includes supporting files in this directory - explore as needed.
 ---
 
