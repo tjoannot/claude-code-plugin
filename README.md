@@ -4,12 +4,13 @@ This plugin connects [Claude Code](https://code.claude.com) to [Pigment](https:/
 
 ## Installation
 
-### 1. Install the plugin
+### 1. Add the marketplace and install the plugin
 
-In Claude Code, run:
+In Claude Code, run these two commands:
 
 ```
-/install-plugin gopigment/claude-code-plugin
+/plugin marketplace add gopigment/claude-code-plugin
+/plugin install pigment@pigment-plugins
 ```
 
 ### 2. Connect to your Pigment workspace
