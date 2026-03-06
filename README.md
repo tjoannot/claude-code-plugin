@@ -4,14 +4,9 @@ This plugin connects [Claude Code](https://code.claude.com) to [Pigment](https:/
 
 ## Installation
 
-### 1. Add the marketplace and install the plugin
+### 1. Install the plugin
 
-From your terminal, run:
-
-```bash
-claude plugin marketplace add gopigment/claude-code-plugin
-claude plugin install pigment@pigment-plugins
-```
+In Claude Code, type `/plugin`, go to the **Discover** tab, search for **Pigment**, and install it.
 
 ### 2. Connect to your Pigment workspace
 
