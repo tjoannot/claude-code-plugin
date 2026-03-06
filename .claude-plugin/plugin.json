@@ -1,0 +1,12 @@
+{
+  "name": "pigment",
+  "description": "Pigment business planning platform integration. Build, model, and manage Pigment applications with AI-powered skills for modeling, formulas, performance optimization, board design, data integration, and domain-specific use cases.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pigment",
+    "email": "support@pigment.com"
+  },
+  "homepage": "https://www.pigment.com",
+  "repository": "https://github.com/niceideas/pigment-claude-plugin",
+  "license": "MIT"
+}
