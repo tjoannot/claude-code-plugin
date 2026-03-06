@@ -1,0 +1,18 @@
+{
+  "name": "pigment-plugins",
+  "owner": {
+    "name": "Pigment",
+    "email": "support@pigment.com"
+  },
+  "metadata": {
+    "description": "Pigment plugins for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "pigment",
+      "source": "./",
+      "description": "Connect Claude Code to Pigment workspaces — query live business data, build planning models, write formulas, design dashboards, and import data using 65+ MCP tools and 8 specialized skills.",
+      "version": "1.1.0"
+    }
+  ]
+}
