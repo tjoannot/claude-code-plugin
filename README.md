@@ -9,7 +9,7 @@ This plugin connects [Claude Code](https://code.claude.com) to [Pigment](https:/
 In Claude Code, run:
 
 ```
-/install-plugin tjoannot/claude-code-plugin
+/install-plugin gopigment/claude-code-plugin
 ```
 
 ### 2. Connect to your Pigment workspace
