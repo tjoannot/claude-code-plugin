@@ -13,11 +13,21 @@ In Claude Code, install the plugin:
 Or install directly from GitHub:
 
 ```
-/plugin marketplace add https://github.com/tjoannot/claude-code-plugin.git
-/plugin install pigment@claude-code-plugin
+/plugin marketplace add tjoannot/claude-code-plugin
+/plugin install pigment@pigment-plugins
 ```
 
-After installing, start using it. You'll be prompted to authenticate with your Pigment credentials via OAuth 2.1.
+### Configure your MCP endpoint
+
+After installing, set the `PIGMENT_MCP_ID` environment variable to your workspace's MCP ID. You can find this UUID in **Settings > Integrations > MCP** in your Pigment workspace.
+
+Add it to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
+
+```bash
+export PIGMENT_MCP_ID="your-mcp-uuid-here"
+```
+
+Then restart Claude Code. You'll be prompted to authenticate with your Pigment credentials via OAuth 2.1.
 
 **Prerequisites:**
 - MCP must be enabled in your Pigment workspace (**Settings > Integrations > MCP**)
@@ -27,7 +37,7 @@ After installing, start using it. You'll be prompted to authenticate with your P
 
 ### MCP Server
 
-The plugin connects to Pigment's hosted MCP server using your workspace's unique endpoint URL. Authentication is handled via OAuth 2.1.
+The plugin connects to Pigment's hosted MCP server at `https://pigment.app/api/mcp/public/{your-mcp-id}`. The MCP ID is read from the `PIGMENT_MCP_ID` environment variable. Authentication is handled via OAuth 2.1.
 
 ### Skills (8)
 
