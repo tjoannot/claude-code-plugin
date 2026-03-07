@@ -1,6 +1,6 @@
 {
   "name": "pigment",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Connect Claude Code to Pigment workspaces — query live business data, build planning models, write formulas, design dashboards, and import data using 65+ MCP tools and 8 specialized skills.",
   "author": {
     "name": "Pigment",
