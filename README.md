@@ -213,10 +213,15 @@ The MCP server exposes the following tools on the public gateway.
 ```
 claude-code-plugin/
 ├── .claude-plugin/
-│   └── plugin.json              # Plugin manifest
-├── .mcp.json                    # MCP server configuration
+│   ├── plugin.json              # Plugin manifest
+│   └── marketplace.json         # Marketplace catalog
+├── .mcp.json                    # MCP server configuration (placeholder)
+├── hooks/
+│   └── hooks.json               # Session start hook
+├── scripts/
+│   └── check-mcp-url.sh         # Checks MCP URL on session start
 ├── logo.svg                     # Plugin logo
-├── README.md                    # This file
+├── README.md
 └── skills/
     ├── analyzing-pigment-data/        # Data exploration and querying
     ├── modeling-pigment-applications/  # Core modeling knowledge

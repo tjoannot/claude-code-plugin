@@ -4,7 +4,7 @@ set -euo pipefail
 MCP_FILE="${CLAUDE_PLUGIN_ROOT}/.mcp.json"
 
 if [ ! -f "$MCP_FILE" ]; then
-  echo "⚠️ Pigment MCP configuration file not found. Run /setup to connect your Pigment workspace."
+  echo "⚠️ Pigment MCP configuration file not found. To connect, paste your MCP Endpoint URL from Pigment (Settings > Integrations > MCP)."
   exit 0
 fi
 
