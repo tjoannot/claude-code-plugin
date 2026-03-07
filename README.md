@@ -223,6 +223,7 @@ claude-code-plugin/
 ├── logo.svg                     # Plugin logo
 ├── README.md
 └── skills/
+    ├── pigment-tool-routing/          # Intent classification (auto-loaded)
     ├── analyzing-pigment-data/        # Data exploration and querying
     ├── modeling-pigment-applications/  # Core modeling knowledge
     ├── writing-pigment-formulas/      # Formula language reference

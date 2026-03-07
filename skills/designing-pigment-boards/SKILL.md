@@ -3,7 +3,7 @@ name: designing-pigment-boards
 description: Always use when creating or editing a Board. This skill includes supporting files in this directory - explore as needed.
 ---
 
-** CRITICAL:** You must read and apply the widgets sizing guidelines: [board_widget_sizes.md](./board_widget_sizes.md)
+**CRITICAL:** You must read and apply the widgets sizing guidelines: [board_widget_sizes.md](./board_widget_sizes.md)
 
 # How to Use This Skill
 
@@ -50,7 +50,7 @@ When doing the following tasks, you MUST read these documents:
 
 - When creating or editing a Board:
   - Must read to the end: [board_design_rules.md](./board_design_rules.md)
-  - ** CRITICAL:** You must read and apply the widgets sizing guidelines: [board_widget_sizes.md](./board_widget_sizes.md)
+  - **CRITICAL:** You must read and apply the widgets sizing guidelines: [board_widget_sizes.md](./board_widget_sizes.md)
   - Must read: [board_pages.md](./board_pages.md)
 
 - When you decide you need a View:
