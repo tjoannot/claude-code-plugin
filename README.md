@@ -33,12 +33,13 @@ Claude will update the `.mcp.json` configuration for you. You'll be prompted to 
 
 The plugin connects to Pigment's hosted MCP server using your workspace's unique endpoint URL. Authentication is handled via OAuth 2.1.
 
-### Skills (8)
+### Skills (9)
 
 Skills are domain knowledge files that teach the AI assistant how to work with Pigment effectively. They are automatically loaded when relevant to your task.
 
 | Skill | Description |
 |-------|-------------|
+| **analyzing-pigment-data** | Data exploration, querying, analysis patterns, ambiguity handling, result interpretation |
 | **modeling-pigment-applications** | Core modeling concepts, architecture, dimensions, metrics, tables, calendars, subsets, access rights, auditing, cleaning |
 | **writing-pigment-formulas** | Pigment's proprietary formula language — syntax, modifiers, functions, validation workflow, performance patterns |
 | **optimizing-pigment-performance** | Profiling, scoping, sparsity management, iterative calculations, access rights performance |
@@ -176,18 +177,6 @@ The MCP server exposes the following tools on the public gateway.
 | `create_draft_view` | Create a draft view for safe editing |
 | `merge_draft_view` | Merge a draft view back |
 
-### Commands
-
-Quick-access slash commands for common workflows:
-
-| Command | Description |
-|---------|-------------|
-| `/model` | Design or modify a Pigment application model |
-| `/formula` | Write a Pigment formula |
-| `/optimize` | Diagnose and fix performance issues |
-| `/import-data` | Import data into Pigment |
-| `/build-board` | Design and create a dashboard |
-| `/audit` | Audit an application for issues |
 
 ## Usage Examples
 
@@ -228,14 +217,8 @@ claude-code-plugin/
 ├── .mcp.json                    # MCP server configuration
 ├── logo.svg                     # Plugin logo
 ├── README.md                    # This file
-├── commands/                    # Slash commands
-│   ├── audit.md
-│   ├── build-board.md
-│   ├── formula.md
-│   ├── import-data.md
-│   ├── model.md
-│   └── optimize.md
 └── skills/
+    ├── analyzing-pigment-data/        # Data exploration and querying
     ├── modeling-pigment-applications/  # Core modeling knowledge
     ├── writing-pigment-formulas/      # Formula language reference
     ├── optimizing-pigment-performance/ # Performance optimization
