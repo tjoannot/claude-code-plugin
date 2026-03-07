@@ -2,7 +2,10 @@
   "mcpServers": {
     "pigment": {
       "type": "http",
-      "url": "https://pigment.app/api/mcp/public/{your-mcp-id}"
+      "url": "https://pigment.app/api/mcp/public/{your-mcp-id}",
+      "headers": {
+        "X-Pigment-Public-Origin": "true"
+      }
     }
   }
 }
